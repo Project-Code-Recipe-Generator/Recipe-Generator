@@ -11,9 +11,9 @@ Hello! Welcome to the Recipe Generator Project for Spring'24. This guide will wa
 
 To get started, clone the repository to your local machine:
     
-    ```
+    
     git clone https://github.com/varuns10/Recipe-Generator-Project-Spring-24.git
-    ```
+    
 
 ## Setting Up the Development Environment
 
