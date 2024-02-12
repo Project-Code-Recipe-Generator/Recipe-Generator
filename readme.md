@@ -1,6 +1,6 @@
 # Recipe Generator Project Setup Guide - Spring'24
 
-Hello! Welcome to the Recipe Generator Project for Spring'24. This guide will walk you through cloning the repository and setting up your development environment.
+Hello! Welcome to the Recipe Generator Project for Spring'24. This guide will walk you through cloning the repository, working on your own branch and setting up your development environment. Please make sure to read through the whole guide once before you start working through the steps.
 
 ## Project Managers
 
@@ -47,7 +47,7 @@ To maintain the integrity of the main codebase, all contributors are required to
 
 4. **Keep Your Branch Updated**
 
-    Regularly update your branch with changes from the main branch to minimize merge conflicts:
+    Regularly update your branch with changes from the main branch to minimize merge conflicts. Everytime you begin working, you can run the following git commands to make sure your branch is kept updated:
 
     ```
     git checkout main
@@ -55,6 +55,7 @@ To maintain the integrity of the main codebase, all contributors are required to
     git checkout <your-branch-name>
     git merge main
     ```
+
 5. **Pushing Your Branch's Code onto 'main' Branch**
 
    We will update this section later when tasks are assigned. For now, please do not make any changes to the main branch and make sure you're always working in your own branch.
