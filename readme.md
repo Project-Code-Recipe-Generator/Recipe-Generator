@@ -1,6 +1,6 @@
 # Recipe Generator Project Setup Guide - Spring'24
 
-Hello! Welcome to the Recipe Generator Project for Spring'24. This guide will walk you through cloning the repository and setting up your development environment.
+Hello! Welcome to the Recipe Generator Project for Spring'24. This guide will walk you through cloning the repository, working on your own branch and setting up your development environment. Please make sure to read through the whole guide once before you start working through the steps.
 
 ## Project Managers
 
@@ -10,9 +10,55 @@ Hello! Welcome to the Recipe Generator Project for Spring'24. This guide will wa
 ## Cloning the Repository
 
 To get started, clone the repository to your local machine:
+    
+    
+    git clone https://github.com/varuns10/Recipe-Generator-Project-Spring-24.git
 
-git clone https://github.com/varuns10/Recipe-Generator-Project-Spring-24.git
+## Working on Your Own Branch
 
+To maintain the integrity of the main codebase, all contributors are required to work on their own branches. Follow these steps to set up and work on your branch:
+
+1. **Create and Switch to Your Branch**
+
+    After navigating to the project directory, create a new branch and switch to it using:
+
+    ```
+    git checkout -b <your-branch-name>
+    ```
+
+    Replace `<your-branch-name>` with your own name for now, such as `Varun` or `Neel`. We might create separate branches for tasks in the future. 
+
+2. **Make Changes and Commit**
+
+    Make your changes in the codebase. Then, add and commit those changes:
+
+    ```
+    git add .
+    git commit -m "Your commit message"
+    ```
+
+3. **Push Your Branch to the Remote Repository**
+
+    Push your branch and changes to GitHub:
+
+    ```
+    git push -u origin <your-branch-name>
+    ```
+
+4. **Keep Your Branch Updated**
+
+    Regularly update your branch with changes from the main branch to minimize merge conflicts. Everytime you begin working, you can run the following git commands to make sure your branch is kept updated:
+
+    ```
+    git checkout main
+    git pull
+    git checkout <your-branch-name>
+    git merge main
+    ```
+
+5. **Pushing Your Branch's Code onto 'main' Branch**
+
+   We will update this section later when tasks are assigned. For now, please do not make any changes to the main branch and make sure you're always working in your own branch.
 
 ## Setting Up the Development Environment
 
@@ -71,63 +117,6 @@ This setup assumes:
     pip install flask
     pip install -r requirements.txt
     ```
-
-## Working on Your Own Branch
-
-To maintain the integrity of the main codebase, all contributors are required to work on their own branches. Follow these steps to set up and work on your branch:
-
-1. **Create and Switch to Your Branch**
-
-    After navigating to the project directory, create a new branch and switch to it using:
-
-    ```
-    git checkout -b <your-branch-name>
-    ```
-
-    Replace `<your-branch-name>` with a meaningful name for your branch, such as `feature-ingredient-search` or `john-doe-fix`.
-
-2. **Make Changes and Commit**
-
-    Make your changes in the codebase. Then, add and commit those changes:
-
-    ```
-    git add .
-    git commit -m "Your commit message"
-    ```
-
-3. **Push Your Branch to the Remote Repository**
-
-    Push your branch and changes to GitHub:
-
-    ```
-    git push -u origin <your-branch-name>
-    ```
-
-4. **Keep Your Branch Updated**
-
-    Regularly update your branch with changes from the main branch to minimize merge conflicts:
-
-    ```
-    git checkout main
-    git pull
-    git checkout <your-branch-name>
-    git merge main
-    ```
-5. **Pushing Your Branch's Code onto 'main' Branch**
-
-   First Ensure your branch is updated by doing step 4.
-
-   Now do the following:
-
-    ```
-    git fetch origin
-    git checkout main
-    git pull origin main
-    git merge your-branch-name
-    git push origin main
-
-    ```
-
 
 ## Getting Started
 
