@@ -1,48 +1,21 @@
-/*
-import logo from './logo.svg';
-import './App.css';  
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;*/
-
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import HomePage from './HomePage';
-import SearchBar from './SearchBar';
-import RecipeList from './RecipeList';
-import Recipe from './Recipe';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomePage from './components/HomePage';
+import SearchBar from './components/SearchBar';
+import RecipeList from './components/RecipeList';
+import Recipe from './components/Recipe';
 
 const App = () => {
   return (
     <Router>
       <div>
-        <SearchBar onSearch={ //function to perform search/ / /}
-        <Switch>
-          <Route path="/" exact component={HomePage} />
-          <Route path="/search" exact component={RecipeList} />
-          <Route path="/recipe/:id" component={Recipe} />
-         // {/* You can add more routes here */}
-        </Switch>
+        <SearchBar onSearch={() => { /* function to perform search */ }} />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/search" element={<RecipeList />} />
+          <Route path="/recipe/:id" element={<Recipe />} />
+          // ... other routes
+        </Routes>
       </div>
     </Router>
   );
