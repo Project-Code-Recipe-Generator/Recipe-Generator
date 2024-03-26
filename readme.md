@@ -71,7 +71,7 @@ This setup assumes:
     Open a terminal and run:
 
     ```
-    cd Recipe-Generator-Project-Spring-24
+    cd Recipe-Generator
     ```
 
 2. **Create the Virtual Environment**
