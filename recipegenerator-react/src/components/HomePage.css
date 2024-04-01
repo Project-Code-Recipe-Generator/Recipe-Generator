@@ -1,0 +1,132 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+input,
+button {
+  font-family: "Poppins", sans-serif;
+}
+.whole-container {
+  display: flex;
+}
+
+.left-side-container {
+}
+
+.title-container {
+  margin-left: 350px;
+  margin-right: 20px;
+  margin-top: 100px;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+}
+
+.description-container {
+  width: 400px;
+  margin-left: 350px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+}
+
+.pink-bar {
+  width: 460px;
+  height: 10px;
+  background-color: #efa3a3;
+  border-radius: 10px 10px 0 0;
+  margin-left: 345px;
+  margin-right: 20px;
+}
+
+.box-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-container {
+  width: 460px;
+  height: 125px;
+  box-shadow: 0px 5px 5px 0px rgba(128, 128, 128, 0.5);
+  border-radius: 0 0 10px 10px;
+  margin-left: 345px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.icon-container {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  margin-right: 5px;
+  margin-top: 10px;
+}
+
+.box-columns {
+  display: flex;
+  flex-direction: column;
+}
+
+.box-headers {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+  text-align: center;
+  margin-bottom: 1px;
+}
+
+.box-text {
+  font-size: 17px;
+  font-weight: 500;
+  color: #000;
+  text-align: center;
+  margin: 15px;
+}
+
+.circle-container {
+  width: 350px;
+  height: 325px;
+  background-color: #efa3a3;
+  border: 1px solid #efa3a3;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+  margin-top: 100px;
+}
+
+.image-container {
+  width: 250px;
+  height: 270px;
+  border-radius: 20px;
+  overflow: hidden;
+  background-image: url("food_image.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.left-side-container .circle-container {
+  flex: 1;
+}
