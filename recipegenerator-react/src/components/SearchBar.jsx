@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const SearchBar = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearchInputChanges = (e) => {
     setSearchTerm(e.target.value);
   };
 
   const resetInputField = () => {
-    setSearchTerm('');
+    setSearchTerm("");
   };
 
   const callSearchFunction = (e) => {
@@ -19,7 +19,7 @@ const SearchBar = ({ onSearch }) => {
 
   return (
     <form>
-      <input 
+      <input
         value={searchTerm}
         onChange={handleSearchInputChanges}
         type="text"
