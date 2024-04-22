@@ -114,6 +114,11 @@ def get_nutrition():
     - HTTP 400 error 
     OR
     - {
+        "calories": str (e.g., "277"),
+        "carbs": str (e.g., "23g")
+        "fat": str (e.g., "20g"),
+        "protein": str (e.g., "20g"),
+        "isStale": bool
         "nutrients": [
             {
                 "name": str (e.g., "Calories"),
@@ -148,7 +153,7 @@ def get_nutrition():
                 ... see above for exact same structure, but without ingredients
             }
         ],
-        "caloricBreakdown": {
+        "caloricBreakdown": (0-100) {
             "percentProtein": float,
             "percentFat": float,
             "percentCarbs": float
@@ -158,7 +163,6 @@ def get_nutrition():
             "unit": str (e.g., "g")
         }
     }
-
     '''
     try: 
         recipe_id = request.form.get("recipe_id")
@@ -166,7 +170,7 @@ def get_nutrition():
         return "Please select a recipe", 400
     
     try: 
-        api_result = api.visualize_recipe_nutrition_by_id(recipe_id).json()
+        api_result = api._make_request("recipes/{id}/nutritionWidget.json".format(id=recipe_id), method="GET").json()
         return api_result
     except Exception as e:
         print(e)
