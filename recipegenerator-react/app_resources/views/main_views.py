@@ -10,9 +10,9 @@ main_views = create_blueprint("main")
 def do_main_home():
     return render_template("hello.html")
 
-@main_views.route("/api/nlp-query")
-def search_nlp():
-    '''Takes a query and parses it into dishes, ingredients, cuisines, modifiers
+@main_views.route("/api/query")
+def do_query():
+    '''Takes a recipe query and parses it into dishes -> ingredients, instructions, health information
     
     @params
     formdata with key "query"
@@ -21,21 +21,68 @@ def search_nlp():
     - HTTP 400 error 
     OR
     - {
-        "dishes": list[
+        "number": int   (The number of expected results (between 1 and 100)),
+        "offset": int     (The number of results to skip (between 0 and 900)),
+        "results": [
             {
-                "image": str    (file name)
-                "name":          (Name of dish)
+                "title": str,
+                "image": url,
+                "imageType": str (e.g., "jpg"),
+                **"readyInMinutes": int,
+                **"servings": int,
+                "cookingMinutes": int (CAN be 0 or -1),
+                "preparationMinutes": int (CAN be 0 or -1),
+                "summary": str (SUmmary of recipe in HTML markdown),
+                "instructions": str (Paragraph version of "analyzedInstructions"),                
+                "analyzedInstructions": {
+                    "steps": [
+                        "number": int   (Step number 1, 2, ...),
+                        "step": str (what is done on the step),
+                        "ingredients": [
+                                {
+                                    "id": int,
+                                    "image": "url/name.png",
+                                    "localizedName": str (i.e., display name),
+                                    "name": str
+                                }
+                            ]
+                    ]
+                },           
+                "sourceName": str,
+                "sourceUrl": url,
+                "dairyFree": bool,
+                "glutenFree": bool,
+                "vegan": bool,
+                "vegetarian": bool,
+                "veryHealthy": bool,
+                "veryPopular": bool
+                "lowFodmap": bool,
+                "sustainable": bool,
+                "taste": (scale of 0-100) {
+                    "bitterness": float,
+                    "fattiness": float,
+                    "saltiness": float,
+                    "savoriness": float,
+                    "sourness": float,
+                    "spiciness": float,
+                    "sweetness": float
+                }
+                "creditsText": str,
+                "license": str,
+                "spoonacularScore": float,
+                "spoonacularSourceUrl": url,
+                "cuisines": [],
+                "diets": [str] (e.g.,"lacto ovo vegetarian" ),
+                "dishTypes": [str] (e.g., "dessert"),
+                "occasions": list[str],
+                "cheap": bool,
+                "aggregateLikes": int,
+                "gaps": "yes" | "no",
+                "healthScore": int,
+                "id": int
             }
-        ],
-        "ingredients": list[
-            {
-                "image": str,    (file name)
-                "include": bool  (JS style false/true)
-                "name":          (Name of ingredient)
-            }
-        ],
-        "cuisines": [str],
-        "modifiers": list[str]
+        ]
+        "totalResults": int (All matched recipes)
     }
     '''
 
@@ -45,8 +92,12 @@ def search_nlp():
         return "Please enter search query", 400
     
     try: 
-        result = api.analyze_a_recipe_search_query(query).json()
-        print(result)
-        return result
-    except Exception:
+        api_result = api.search_recipes_complex(query, number=10).json()
+        # not working for some reason, do individually
+        # bulk_info = api.get_recipe_information_bulk( [recipe["id"] for recipe in api_result["results"]] ).json()
+        for i in range(len(api_result["results"])):
+            api_result["results"][i] = api.get_recipe_information(api_result["results"][i]["id"]).json() 
+        return api_result
+    except Exception as e:
+        print(e)
         return "Error fetching query", 400

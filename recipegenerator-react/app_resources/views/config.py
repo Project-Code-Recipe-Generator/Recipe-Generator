@@ -1,6 +1,6 @@
 import os
 
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, jsonify
 
 configs = {
     "STATIC_LOC" : "./public",

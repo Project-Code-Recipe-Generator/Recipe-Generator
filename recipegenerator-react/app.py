@@ -3,7 +3,7 @@ from app_resources import all_views
 
 def create_app() -> Flask:
     app = Flask(__name__)
-    app.config.from_pyfile('./app/config.py', silent=True)
+    app.config.from_pyfile('./app_resources/config.py')
 
     app.register_blueprint(all_views)
 
