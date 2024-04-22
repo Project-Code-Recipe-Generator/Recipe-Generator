@@ -101,3 +101,73 @@ def do_query():
     except Exception as e:
         print(e)
         return "Error fetching query", 400
+    
+
+@main_views.route("/api/nutrition")
+def get_nutrition():
+    '''Takes a recipe id and gets nutritional info
+    
+    @params
+    formdata with key "recipe_id"
+
+    @return
+    - HTTP 400 error 
+    OR
+    - {
+        "nutrients": [
+            {
+                "name": str (e.g., "Calories"),
+                "amount": float,
+                "unit": str (e.g., "kcal"),
+                "percentOfDailyNeeds": float (0-100)
+            }
+        ],
+        "properties": [
+            {
+                "name": str (e.g., "Glycemic Index"),
+                "amount": float,
+                "unit": str (e.g., %, nothing etc.)
+            }
+        ],
+        "flavonoids": [
+            {
+                "name": str (e.g., "Cyanidin"),
+                "amount": float,
+                "unit": str
+            }
+        ],
+        "ingredients": [
+            {
+                "id": int,
+                "name": str,
+                "amount": float,
+                "unit": str,
+                "nutrients": [
+                    # see above for structure
+                ],
+                ... see above for exact same structure, but without ingredients
+            }
+        ],
+        "caloricBreakdown": {
+            "percentProtein": float,
+            "percentFat": float,
+            "percentCarbs": float
+        },
+        "weightPerServing": {
+            "amount": int,
+            "unit": str (e.g., "g")
+        }
+    }
+
+    '''
+    try: 
+        recipe_id = request.form.get("recipe_id")
+    except Exception:
+        return "Please select a recipe", 400
+    
+    try: 
+        api_result = api.visualize_recipe_nutrition_by_id(recipe_id).json()
+        return api_result
+    except Exception as e:
+        print(e)
+        return "Error fetching query", 400
